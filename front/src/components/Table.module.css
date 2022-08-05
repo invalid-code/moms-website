@@ -1,6 +1,11 @@
 .table {
-  border: black 2px solid;
-  margin: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 10px 0;
+}
+
+.tableBody {
   text-align: center;
-  width: 500px;
+  border-collapse: collapse;
+  /* width: 500px; */
 }
