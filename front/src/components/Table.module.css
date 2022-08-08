@@ -9,3 +9,8 @@
   border-collapse: collapse;
   /* width: 500px; */
 }
+
+tr,
+td {
+  border: solid 2px black;
+}

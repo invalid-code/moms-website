@@ -1,5 +1,5 @@
-function About() {
+function Home() {
   return <div>still being made</div>;
 }
 
-export default About;
+export default Home;

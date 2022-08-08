@@ -1,5 +1,5 @@
 function Faq() {
-  return <div>faq page</div>;
+  return <div>still being made</div>;
 }
 
 export default Faq;
