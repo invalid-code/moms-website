@@ -1,8 +1,15 @@
 import { createResource, createSignal, For, Show } from "solid-js";
-import styles from "./Table.module.css";
+import Box from "@suid/material/Box";
+import Paper from "@suid/material/Paper";
+import Table from "@suid/material/Table";
+import TableBody from "@suid/material/TableBody";
+import TableCell from "@suid/material/TableCell";
+import TableContainer from "@suid/material/TableContainer";
+import TableHead from "@suid/material/TableHead";
+import TableRow from "@suid/material/TableRow";
+import AddIcon from "@suid/icons-material/Add";
 
-function Table() {
-  const [Length, setLength] = createSignal();
+function ProductTable() {
   const [Data] = createResource(
     async () =>
       await fetch("http://127.0.0.1:8000/api/product-list/").then((res) =>
@@ -14,8 +21,22 @@ function Table() {
   };
 
   return (
-    <>
-      <For each={Data()}>
+    <Box>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Hi</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>Hi</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+      {/* <For each={Data()}>
         {(data) => (
           <table class={styles.table}>
             {LongestValue(data.product_table)}
@@ -33,9 +54,10 @@ function Table() {
                     >
                       <For each={row}>
                         {(cell) => (
-                          <>
-                            <td>{cell}</td>
-                          </>
+                          <td>
+                            {cell}
+                            <AddIcon sx={{ width: "20px" }} />
+                          </td>
                         )}
                       </For>
                     </Show>
@@ -45,9 +67,9 @@ function Table() {
             </tbody>
           </table>
         )}
-      </For>
-    </>
+      </For> */}
+    </Box>
   );
 }
 
-export default Table;
+export default ProductTable;
