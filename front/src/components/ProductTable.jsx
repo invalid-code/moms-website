@@ -1,4 +1,4 @@
-import { createResource, createSignal, For, Show } from "solid-js";
+import { createResource, createSignal, Show, mapArray } from "solid-js";
 import Box from "@suid/material/Box";
 import Paper from "@suid/material/Paper";
 import Table from "@suid/material/Table";
@@ -7,7 +7,7 @@ import TableCell from "@suid/material/TableCell";
 import TableContainer from "@suid/material/TableContainer";
 import TableHead from "@suid/material/TableHead";
 import TableRow from "@suid/material/TableRow";
-import AddIcon from "@suid/icons-material/Add";
+import { dividerClasses } from "@suid/material/Divider";
 
 function ProductTable() {
   const [Data] = createResource(
@@ -20,6 +20,8 @@ function ProductTable() {
     setLength(arr.reduce((r, s) => (r > s.length ? r : s.length), 0));
   };
 
+  const rows = [{ hi: "hi" }, { hi: "hi" }, { hi: "hi" }];
+
   return (
     <Box>
       <TableContainer component={Paper}>
@@ -30,44 +32,15 @@ function ProductTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow>
+            {mapArray(rows, (row) => (
+              <div>{row}</div>
+            ))}
+            {/* <TableRow>
               <TableCell>Hi</TableCell>
-            </TableRow>
+            </TableRow> */}
           </TableBody>
         </Table>
       </TableContainer>
-      {/* <For each={Data()}>
-        {(data) => (
-          <table class={styles.table}>
-            {LongestValue(data.product_table)}
-            <tbody class={styles.tableBody}>
-              <For each={data.product_table}>
-                {(row) => (
-                  <tr>
-                    <Show
-                      when={row.length === Length()}
-                      fallback={
-                        <For each={row}>
-                          {(cell) => <td colspan={`${Length()}`}>{cell}</td>}
-                        </For>
-                      }
-                    >
-                      <For each={row}>
-                        {(cell) => (
-                          <td>
-                            {cell}
-                            <AddIcon sx={{ width: "20px" }} />
-                          </td>
-                        )}
-                      </For>
-                    </Show>
-                  </tr>
-                )}
-              </For>
-            </tbody>
-          </table>
-        )}
-      </For> */}
     </Box>
   );
 }
